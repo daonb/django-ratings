@@ -78,9 +78,9 @@ How you can order by top-rated using an algorithm (example from Nibbits.com sour
 
 	# In this example, ``rating`` is the attribute name for your ``RatingField``
 	qs = qs.extra(select={
-	    'rating': '((100/%s*rating_score/(rating_votes+%s))+100)/2' % (MyModel.rating.range, MyModel.rating.weight)
+	    'rank': '((100/%s*rating_score/(rating_votes+%s))+100)/2' % (MyModel.rating.range, MyModel.rating.weight)
 	})
-	qs = qs.order_by('-rating')
+	qs = qs.order_by('-rank')
 
 Get overall rating for your instance on a scale [0-range]::
 
